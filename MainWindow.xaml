@@ -1,0 +1,317 @@
+﻿<Window x:Class="N3PS.GenerateXml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:N3PS.GenerateXml"
+        mc:Ignorable="d"
+        Title="Generate XML" Height="600" Width="960">
+    
+        <TabControl>
+        <TabItem Header="Flat File">
+            <StackPanel Orientation="Horizontal">
+
+                  
+            <Border Background="BlanchedAlmond" BorderBrush="Silver" BorderThickness="1" Width="850" CornerRadius="8,8,3,3">
+                
+                <StackPanel Margin="5,15,5,5" Width="800">
+
+                        <Button Name="btnLoadXML" Click="btnLoadXML_Click" Content="Load XML" Margin="5,5,5,5" Height="30"></Button>
+                        
+                    <Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" CornerRadius="8,8,3,3">
+                    <Grid Margin="15,10,5,5" >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="600" />
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+
+                        </Grid.RowDefinitions>
+
+                        <CheckBox Grid.Column="0" Grid.Row="0" x:Uid="chkHeaderExist" x:Name="chkHeaderExist">Header Exist</CheckBox>
+                        <StackPanel Grid.Column="1" Grid.Row="0"  Orientation="Horizontal">
+                            <Label Target="{Binding ElementName=txtRecordSize}">Record Size</Label>
+                            <TextBox Margin="5,5,5,5" x:Name="txtRecordSize" Width="70" Height="20" VerticalAlignment="Top"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <Label Target="{Binding ElementName=txtFlatFilePath}">Flat File Path</Label>
+                            <TextBox Margin="5,5,5,5" x:Name="txtFlatFilePath" Width="600" Height="20" VerticalAlignment="Top"/>
+                                    <Button Name="btnOpenFileDialog" Click="btnOpenFileDialog_Click" Content=" ... " Margin="5,5,5,5"></Button>
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+
+                <Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" CornerRadius="8,8,3,3" Margin="0,15,0,0">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="700"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="70"></RowDefinition>
+                        </Grid.RowDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Label Target="{Binding ElementName=txtFieldName}" >Field Name</Label>
+                    <TextBox Margin="5,5,5,5" x:Name="txtFieldName" Width="670" Height="20" />
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <Label Target="{Binding ElementName=txtColumnNumber}" >Column Number</Label>
+                        <TextBox Margin="5,5,5,5" x:Name="txtColumnNumber" Width="643" Height="20" />
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <Label Target="{Binding ElementName=txtSequenceNumber}" >Sequence Number</Label>
+                        <TextBox Margin="5,5,5,5" x:Name="txtSequenceNumber" Width="633" Height="20" />
+                    </StackPanel>
+
+
+
+                    <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <Label Target="{Binding ElementName=txtLength}" >Length</Label>
+                        <TextBox Margin="5,5,5,5" x:Name="txtLength" Width="693" Height="20" />
+                    </StackPanel>
+
+                                <Button x:Name="btnAddField" Content="Add Field" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,15,45,15" Click="btnAddField_Click" ClickMode="Press"> </Button>
+                </Grid>
+</Border>
+
+
+                        <DataGrid x:Name="dgFields" AutoGenerateColumns="False" Margin="15,15,15,15" Width="660" CanUserAddRows="false" CanUserDeleteRows="True">
+                        <DataGrid.Columns>
+                                <DataGridTextColumn Header="Field Name" Binding="{Binding FieldName}" Width="150" />
+                                <DataGridTextColumn Header="Column Number" Binding="{Binding ColumnNumber}" Width="150"  />
+                                <DataGridTextColumn Header="Sequence Number" Binding="{Binding SquenceNumber}"  Width="100" />
+                                <DataGridTextColumn Header="Length" Binding="{Binding Length}" Width="100" />
+                                <DataGridTemplateColumn Header="Delete" Width="80">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Name="btnGridFieldsDelete" Click="btnGridFieldsDelete_Click">Delete</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+
+                               
+                            </DataGrid.Columns>
+                       
+                    </DataGrid>
+
+
+                    
+                </StackPanel>
+            </Border>
+                <Button x:Name="btnGenerateXML" Click="btnGenerateXML_Click" Content="Generate XML" Margin="15,15,25,15" Height="50">
+                    <Button.LayoutTransform>
+                        <RotateTransform Angle="-90" />
+                    </Button.LayoutTransform>
+                </Button>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Validation Rule" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="900"></ColumnDefinition>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="0">
+                <Border Background="BlanchedAlmond" BorderBrush="Silver" BorderThickness="1" Width="880" CornerRadius="8,8,3,3">
+                    <StackPanel>
+                        <Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" CornerRadius="8,8,3,3" Margin="0,15,0,0" Height="40" VerticalAlignment="Top">
+                                <Button Name="btnLoadValidationRuleXML" Click="btnLoadValidationRuleXML_Click" Content="Validation Rule" Margin="5,5,5,5"></Button>
+                        </Border>
+
+
+                        <Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" CornerRadius="8,8,3,3" Margin="5,15,0,0"  VerticalAlignment="Top">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="800"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="5,5,5,5">
+                                    <Label Content="Validation Id"></Label>
+                                    <TextBox Name="txtValidationId" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="5,5,5,5">
+                                    <Label Content="Validation Name"></Label>
+                                    <TextBox Name="txtValidationName" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="5,5,5,5">
+                                        <Label Content="Column Number"></Label>
+                                        <TextBox Name="txtValidationColumnNumber" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="5,5,5,5">
+                                    <Label Content="Validation Type"></Label>
+                                        <ComboBox Name="cbValidationType" Width="300" Height="30" DropDownClosed="cbValidationType_OnDropDownClosed">
+                                            <ComboBoxItem IsSelected="True">Length Validation</ComboBoxItem>
+                                        <ComboBoxItem >Mandatory Check</ComboBoxItem>
+                                        <ComboBoxItem>Value Validation</ComboBoxItem>
+                                        <ComboBoxItem>Number Validation</ComboBoxItem>
+                                        <ComboBoxItem>Date Validation</ComboBoxItem>
+                                        <ComboBoxItem>External Routine Call</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Margin="5,5,5,5" Name="spValidationSize">
+                                    <Label Content="Validation Size"></Label>
+                                    <TextBox Name="txtValidationSize" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Margin="5,2,5,5">
+                                    <Label Content="Validation Error Message"></Label>
+                                    <TextBox Name="txtValidationErrorMessage" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Margin="5,2,2,5" Name="spValidationValues">
+                                    <Label Content="Validation Values"></Label>
+                                    <TextBox Name="txtValidationValues" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="0" Margin="5,2,2,5" Name="spValidationDateFormat">
+                                    <Label Content="Date Format"></Label>
+                                    <TextBox Name="txtDateFormat" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="0" Margin="5,2,2,5" Name="spDLLName">
+                                    <Label Content="DLL Name"></Label>
+                                    <TextBox Name="txtDLLName" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="0" Margin="5,2,2,5" Name="spFullyQualifiedClassName">
+                                    <Label Content="Fully Qualified Class Name"></Label>
+                                    <TextBox Name="txtFullyQualifiedClassName" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="0" Margin="5,2,2,5" Name="spRoutineName">
+                                    <Label Content="Routine Name"></Label>
+                                    <TextBox Name="txtRoutineName" Width="500" Height="30" VerticalAlignment="Top"></TextBox>
+                                </StackPanel>
+
+                                    <Button Content="Add Validation Rule" Grid.Row="11" Grid.Column="0" Name="btnAddValidationRule" Click="btnAddValidationRule_Click"  Width="600" Height="30" Margin="5,5"></Button>
+                            </Grid>
+                        </Border>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <DataGrid x:Name="dgValidationRule" AutoGenerateColumns="False" Margin="15,15,15,15" Width="1400" CanUserAddRows="false" CanUserDeleteRows="True" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Validation Id" Binding="{Binding ValidationId}" Width="80" />
+                                        <DataGridTextColumn Header="Validation Name" Binding="{Binding ValidationName}" Width="100"  />
+                                        <DataGridTextColumn Header="Column Number" Binding="{Binding ColumnNumber}" Width="100"  />
+                                        <DataGridTextColumn Header="Validation Type" Binding="{Binding ValidationType}"  Width="100" />
+                                <DataGridTextColumn Header="Validation Size" Binding="{Binding ValidationSize}" Width="100" />
+                                <DataGridTextColumn Header="Validation Error Message" Binding="{Binding ValidationErrorMessage}" Width="150" />
+                                <DataGridTextColumn Header="Validation Values" Binding="{Binding ValidationValues}" Width="120" />
+                                <DataGridTextColumn Header="Date Formate" Binding="{Binding DateFormate}" Width="100" />
+
+                                <DataGridTextColumn Header="DLL Name" Binding="{Binding DLLName}" Width="200" />
+                                <DataGridTextColumn Header="Fully Qualified Class Name" Binding="{Binding FullyQualifiedClassName}" Width="200" />
+                                <DataGridTextColumn Header="Routine Name" Binding="{Binding RoutineName}" Width="100" />
+
+                                <DataGridTemplateColumn Header="Delete" Width="80">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Name="btnGridValidationRulesDelete" Click="btnGridValidationRulesDelete_Click">Delete</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                        </ScrollViewer>
+
+                       
+                    </StackPanel>
+
+                  
+                </Border>
+
+
+              
+
+            </ScrollViewer>
+
+
+                <Button x:Name="btnGenerateValidationXML" Click="btnGenerateValidationXML_Click" Content="Generate XML" Margin="5,5,20,5"  Height="40" Grid.Column="1" Grid.Row="0">
+                <Button.LayoutTransform>
+                    <RotateTransform Angle="-90" />
+                </Button.LayoutTransform>
+            </Button>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="Settings" >
+            <Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" CornerRadius="8,8,3,3" Margin="5,15,0,0"  VerticalAlignment="Top">
+                <Grid Margin="5,5,5,5">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="900"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                    <Button Content="Load XML" Name="btnLoadSettingsXML" Click="btnLoadSettingsXML_Click" Grid.Row="0" Margin="5,5,5,5" Height="30"></Button>
+                
+                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                    <CheckBox Name="chkIsNewRun" Content="Is New Run"></CheckBox>
+                </StackPanel>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="5,5,5,5">
+                    <Label Content="Time Setting"></Label>
+                        <TextBox Name="txtTimeSetting" Width="400"  Height="30"></TextBox>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="5,5,5,5">
+                    <Label Content="Percentage Setting"></Label>
+                    <TextBox Name="txtPercentageSetting" Width="400" Height="30"></TextBox>
+                </StackPanel>
+
+                    <Button Content="Generate XML" Name="btnGenerateSettingsXML" Click="btnGenerateSettingsXML_Click" Grid.Row="4" Margin="5,5,5,5" Height="30"></Button>
+               
+            </Grid>
+            </Border>
+        </TabItem>
+    </TabControl>
+        
+    
+</Window>

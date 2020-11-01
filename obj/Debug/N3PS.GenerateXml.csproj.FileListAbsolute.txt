@@ -1,0 +1,15 @@
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\bin\Debug\N3PS.GenerateXml.exe.config
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\bin\Debug\N3PS.GenerateXml.exe
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\bin\Debug\N3PS.GenerateXml.pdb
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml.csprojAssemblyReference.cache
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\MainWindow.g.cs
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\App.g.cs
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml_MarkupCompile.cache
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml_MarkupCompile.lref
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\MainWindow.baml
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml.g.resources
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml.Properties.Resources.resources
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml.csproj.GenerateResource.cache
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml.csproj.CoreCompileInputs.cache
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml.exe
+D:\SP.Phase_1\Source Code\SP-ICRMS-Phase2\N3PS.GenerateXml\obj\Debug\N3PS.GenerateXml.pdb
